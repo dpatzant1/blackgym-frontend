@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import TiendaPage from '../components/react/TiendaPage.tsx';
+import ToastProvider from '../components/react/ToastProvider.tsx';
+---
+
+<Layout 
+  title="Tienda BLACK GYM - Productos Fitness y Suplementos Deportivos"
+  description="Explora nuestra tienda completa de productos fitness. Equipos de gimnasio, suplementos deportivos, proteínas, accesorios y más. La mejor calidad para tu entrenamiento."
+  keywords="tienda fitness, equipos gimnasio, suplementos deportivos, proteínas, black gym, productos fitness, accesorios entrenamiento"
+>
+  <Header />
+  
+  <main class="min-h-screen pt-24 bg-black">
+    <ToastProvider client:load>
+      <TiendaPage client:load />
+    </ToastProvider>
+  </main>
+  
+  <Footer />
+</Layout>

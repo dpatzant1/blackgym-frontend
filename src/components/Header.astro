@@ -1,0 +1,182 @@
+---
+import MobileNav from './react/MobileNav';
+import MiniCart from './react/MiniCart';
+import MobileCartIcon from './react/MobileCartIcon';
+---
+
+<header id="header" class="fixed top-0 w-full bg-black bg-opacity-95 backdrop-blur-sm z-50 transition-all duration-200">
+    <nav class="py-4">
+        <div class="max-w-7xl mx-auto px-5 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="/" class="flex items-center gap-4 group" aria-label="Ir a la página de inicio">
+                <img 
+                    src="/logo-principal-optimizado.webp" 
+                    alt="BLACK GYM Logo - Gimnasio en San Martín Jilotepeque" 
+                    class="h-12 w-auto max-w-[60px] object-contain transition-all duration-300 rounded-lg border-2 border-transparent group-hover:border-neon-green"
+                    loading="eager"
+                >
+                <div class="text-2xl font-black text-white tracking-wider uppercase">
+                    BLACK <span class="text-neon-green">GYM</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <ul id="nav-menu" class="hidden lg:flex list-none m-0 p-0">
+                <li class="ml-8">
+                    <a href="/" class="nav-link text-gray-300 hover:text-neon-green transition-colors duration-300 relative">
+                        Inicio
+                    </a>
+                </li>
+                <li class="ml-8">
+                    <a href="/#nosotros" class="nav-link text-gray-300 hover:text-neon-green transition-colors duration-300 relative">
+                        Nosotros
+                    </a>
+                </li>
+                <li class="ml-8">
+                    <a href="/#productos" class="nav-link text-gray-300 hover:text-neon-green transition-colors duration-300 relative">
+                        Productos
+                    </a>
+                </li>
+                <li class="ml-8">
+                    <a href="/tienda" class="nav-link text-gray-300 hover:text-neon-green transition-colors duration-300 relative">
+                        Tienda
+                    </a>
+                </li>
+                <li class="ml-8">
+                    <a href="/#servicios" class="nav-link text-gray-300 hover:text-neon-green transition-colors duration-300 relative">
+                        Servicios
+                    </a>
+                </li>
+                <li class="ml-8">
+                    <a href="/#planes" class="nav-link text-gray-300 hover:text-neon-green transition-colors duration-300 relative">
+                        Planes
+                    </a>
+                </li>
+                <li class="ml-8">
+                    <a href="/#contacto" class="nav-link text-gray-300 hover:text-neon-green transition-colors duration-300 relative">
+                        Contacto
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Cart & Mobile Navigation -->
+            <div class="flex items-center gap-6">
+                <!-- Mini Cart - Visible en desktop y tablet -->
+                <div class="hidden md:block">
+                    <MiniCart client:load />
+                </div>
+                
+                <!-- Mobile Cart Icon - Solo visible en móvil -->
+                <MobileCartIcon client:load />
+                
+                <!-- Mobile Navigation Component -->
+                <MobileNav client:load />
+            </div>
+        </div>
+    </nav>
+</header>
+
+<style>
+/* Estilos para navegación desktop */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #00ff41;
+    transition: width 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 255, 65, 0.5);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Active navigation state */
+.nav-link.active {
+    color: #00ff41;
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+</style>
+
+<script>
+// Desktop navigation functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scrolling for desktop navigation links
+    document.querySelectorAll('.nav-link').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (!href) return;
+            
+            // Verificamos si estamos en la página de la tienda
+            const isInShopPage = window.location.pathname.includes('/tienda');
+            
+            // Si estamos en la tienda, navegamos directamente a la URL sin prevenir el comportamiento por defecto
+            if (isInShopPage) {
+                // Permitir navegación normal
+                return;
+            }
+            
+            // Solo interceptamos la navegación si estamos en la página principal y es un enlace de anclaje
+            if (href.startsWith('/#')) {
+                e.preventDefault();
+                const targetId = href.substring(1); // Remove the leading '/'
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+    });
+
+    // Update active navigation based on scroll position
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const updateActiveNav = () => {
+        let current = '';
+        const scrollY = window.pageYOffset;
+
+        sections.forEach(section => {
+            const htmlSection = section as HTMLElement;
+            const sectionTop = htmlSection.offsetTop - 100;
+            const sectionHeight = htmlSection.offsetHeight;
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                const id = section.getAttribute('id');
+                if (id) {
+                    current = id;
+                }
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    };
+
+    // Throttled scroll handler
+    let ticking = false;
+    const handleScroll = () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                updateActiveNav();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+});
+</script>

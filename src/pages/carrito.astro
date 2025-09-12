@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CartPage from '../components/react/CartPage.tsx';
+---
+
+<Layout 
+  title="Carrito de Compras - BLACK GYM | Tu Selección de Productos Fitness"
+  description="Revisa tu carrito de compras en BLACK GYM. Productos de gimnasio profesionales, suplementos deportivos y accesorios fitness listos para checkout."
+  keywords="carrito compras, productos fitness, black gym, equipos gimnasio, suplementos deportivos, checkout"
+>
+  <Header />
+  
+  <main class="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black pt-24">
+    <CartPage client:load />
+  </main>
+  
+  <Footer />
+</Layout>
+
+<style>
+  /* Estilos globales para la página del carrito */
+  body {
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+  }
+</style>

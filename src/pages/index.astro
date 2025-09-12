@@ -1,0 +1,102 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/sections/Hero.astro';
+import About from '../components/sections/About.astro';
+import DynamicProductsSection from '../components/shop/DynamicProductsSection.tsx';
+import Services from '../components/sections/Services.astro';
+import Gallery from '../components/sections/Gallery.astro';
+import Plans from '../components/sections/Plans.astro';
+import Contact from '../components/sections/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="BLACK GYM - Implementos de Gimnasio y Suplementación Deportiva | San Martín Jilotepeque">
+    <Header />
+    
+    <!-- Hero Section con Slider -->
+    <Hero />
+
+    <!-- About Section -->
+    <About />
+
+    <!-- Products Section -->
+    <DynamicProductsSection client:load />
+
+    <!-- Services Section -->
+    <Services />
+
+    <!-- Gallery Section -->
+    <Gallery />
+
+    <!-- Plans Section -->
+    <Plans />
+
+    <!-- Contact Section -->
+    <Contact />
+
+    <!-- Footer -->
+    <Footer />
+</Layout>
+
+<style>
+  /* Estilos para la sección de productos dinámicos */
+  .products {
+    background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+  }
+  
+  .section-padding {
+    padding: 60px 0;
+  }
+
+  /* Utilidades para texto truncado */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Mejoras responsivas para productos */
+  @media (max-width: 640px) {
+    .products-grid {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    
+    .section-padding {
+      padding: 40px 0;
+    }
+
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 1024px) {
+    .products-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) and (max-width: 1280px) {
+    .products-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .products-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+</style>

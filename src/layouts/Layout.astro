@@ -1,0 +1,97 @@
+---
+import CartSlideOver from '../components/react/CartSlideOver';
+import ToastProvider from '../components/react/ToastProvider';
+
+export interface Props {
+  title: string;
+  description?: string;
+  keywords?: string;
+}
+
+const { 
+  title = "BLACK GYM - Implementos de Gimnasio y Suplementación Deportiva | San Martín Jilotepeque", 
+  description = "BLACK GYM - Tu destino para equipos de gimnasio profesionales y suplementación deportiva de alta calidad en San Martín Jilotepeque, Chimaltenango. Equipos de fuerza, cardiovasculares, proteínas, accesorios y planes de membresía flexibles.",
+  keywords = "gimnasio, equipos de gimnasio, suplementos deportivos, proteínas, mancuernas, San Martín Jilotepeque, Chimaltenango, Guatemala, fitness, entrenamiento, black gym, planes de gimnasio, membresía gym, precios gimnasio"
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="/principal-desplazamiento-1-optimizado.webp" as="image" media="(min-width: 768px)">
+    <link rel="preload" href="/logo-principal-optimizado.webp" as="image">
+    
+    <!-- DNS Prefetch for performance -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Meta Tags SEO -->
+    <meta name="description" content={description}>
+    <meta name="keywords" content={keywords}>
+    <meta name="author" content="BLACK GYM">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Spanish">
+    <meta name="geo.region" content="GT-CQ">
+    <meta name="geo.placename" content="San Martín Jilotepeque, Chimaltenango">
+    <meta name="geo.position" content="14.7069;-90.8186">
+    <meta name="ICBM" content="14.7069, -90.8186">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://blackgym.gt">
+    
+    <!-- Preload Critical Images -->
+    <link rel="preload" href="/principal-desplazamiento-1-optimizado.webp" as="image" media="(min-width: 768px)">
+    <link rel="preload" href="/principal-desplazamiento-2-optimizado.webp" as="image" media="(min-width: 768px)">
+    <link rel="preload" href="/logo-principal-optimizado.webp" as="image">
+    
+    <!-- DNS Prefetch for performance -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="business.business">
+    <meta property="og:title" content="BLACK GYM - Implementos de Gimnasio y Suplementación Deportiva">
+    <meta property="og:description" content="Especialistas en equipos de gimnasio profesionales, suplementación deportiva y planes de membresía flexibles en San Martín Jilotepeque, Chimaltenango. ¡Sin dolor, no hay progreso!">
+    <meta property="og:url" content="https://blackgym.gt">
+    <meta property="og:site_name" content="BLACK GYM">
+    <meta property="og:image" content="https://blackgym.gt/logo-principal-optimizado.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="es_GT">
+    <meta property="business:contact_data:street_address" content="San Martín Jilotepeque">
+    <meta property="business:contact_data:locality" content="Chimaltenango">
+    <meta property="business:contact_data:region" content="Guatemala">
+    <meta property="business:contact_data:postal_code" content="04001">
+    <meta property="business:contact_data:country_name" content="Guatemala">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BLACK GYM - Implementos de Gimnasio y Suplementación Deportiva">
+    <meta name="twitter:description" content="Especialistas en equipos de gimnasio profesionales y suplementación deportiva en San Martín Jilotepeque, Chimaltenango.">
+    <meta name="twitter:image" content="https://blackgym.gt/logo-principal-optimizado.webp">
+    <meta name="twitter:site" content="@blackgym_gt">
+    <meta name="twitter:creator" content="@blackgym_gt">
+</head>
+<body class="font-roboto bg-primary-black text-text-light overflow-x-hidden">
+    <slot />
+    
+    <!-- Cart Slide Over - Global -->
+    <CartSlideOver client:load />
+    
+    <!-- Toast Notifications Provider -->
+    <ToastProvider client:load />
+</body>
+</html>

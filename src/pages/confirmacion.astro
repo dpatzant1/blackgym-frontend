@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ConfirmacionOrden from '../components/react/ConfirmacionOrden.tsx';
+
+// Obtener el parámetro de orden de la URL
+const url = new URL(Astro.request.url);
+const ordenId = url.searchParams.get('orden');
+---
+
+<Layout 
+  title="Confirmación de Orden - BLACK GYM" 
+  description="Tu orden ha sido procesada exitosamente. Gracias por tu compra en BLACK GYM."
+  keywords="confirmación, orden, compra exitosa, black gym, pedido confirmado"
+>
+  <Header />
+  
+  <main class="min-h-screen bg-primary-black pt-20">
+    <!-- Breadcrumbs -->
+    <div class="bg-secondary-black border-b border-neon-green/20">
+      <div class="max-w-6xl mx-auto px-4 py-4">
+        <nav class="flex items-center space-x-2 text-sm">
+          <a href="/" class="text-light-gray hover:text-neon-green transition-colors">
+            <i class="fas fa-home"></i>
+          </a>
+          <span class="text-light-gray">/</span>
+          <a href="/tienda" class="text-light-gray hover:text-neon-green transition-colors">
+            Tienda
+          </a>
+          <span class="text-light-gray">/</span>
+          <a href="/carrito" class="text-light-gray hover:text-neon-green transition-colors">
+            Carrito
+          </a>
+          <span class="text-light-gray">/</span>
+          <a href="/checkout" class="text-light-gray hover:text-neon-green transition-colors">
+            Checkout
+          </a>
+          <span class="text-light-gray">/</span>
+          <span class="text-neon-green font-medium">Confirmación</span>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Confirmation Content -->
+    <div class="max-w-4xl mx-auto px-4 py-8">
+      <ConfirmacionOrden ordenId={ordenId} client:load />
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Estilos adicionales para la página de confirmación */
+  .success-animation {
+    animation: successPulse 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes successPulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+  }
+</style>

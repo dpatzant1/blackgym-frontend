@@ -1,0 +1,254 @@
+---
+// Contact Section - BLACK GYM
+import ContactForm from '../react/ContactForm.tsx';
+---
+
+<section id="contacto" class="contact section-padding">
+  <div class="container">
+    <div class="section-header text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-black text-white mb-4">
+        CONTÁCTANOS
+      </h2>
+      <div class="section-line w-24 h-1 bg-green-500 mx-auto mb-8"></div>
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+        ¿Listo para transformar tu vida? Contáctanos y descubre todo lo que BLACK GYM tiene para ti
+      </p>
+    </div>
+    
+    <div class="contact-content grid lg:grid-cols-2 gap-12 mb-16">
+      <!-- Contact Information -->
+      <div class="contact-info space-y-8">
+        <div class="contact-item bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-green-500 transition-colors">
+          <div class="flex items-start space-x-4">
+            <div class="contact-icon w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-black text-xl">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-details">
+              <h3 class="text-white font-bold text-lg mb-2">Ubicación</h3>
+              <p class="text-gray-400">San Martín Jilotepeque, Chimaltenango</p>
+              <p class="text-gray-400 text-sm">Guatemala, Centroamérica</p>
+              <a 
+                href="https://maps.google.com/?q=San+Martín+Jilotepeque,+Chimaltenango" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="inline-flex items-center space-x-1 text-green-500 hover:text-green-400 text-sm mt-2 transition-colors"
+              >
+                <span>Ver en Google Maps</span>
+                <i class="fas fa-external-link-alt text-xs"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-item bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-green-500 transition-colors">
+          <div class="flex items-start space-x-4">
+            <div class="contact-icon w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-black text-xl">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-details">
+              <h3 class="text-white font-bold text-lg mb-2">Teléfono</h3>
+              <a 
+                href="tel:+50250509724" 
+                class="text-gray-400 hover:text-green-500 transition-colors"
+              >
+                +502 5050-9724
+              </a>
+              <p class="text-gray-400 text-sm mt-1">Atención de lunes a domingo</p>
+            </div>
+          </div>
+        </div>
+        
+
+        <!-- Whatsapp Target 
+        <div class="contact-item bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-green-500 transition-colors">
+          <div class="flex items-start space-x-4">
+            <div class="contact-icon w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-black text-xl">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <div class="contact-details">
+              <h3 class="text-white font-bold text-lg mb-2">WhatsApp</h3>
+              <a 
+                href="https://wa.me/50250509724?text=Hola%2C%20me%20interesa%20conocer%20más%20sobre%20BLACK%20GYM" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="text-gray-400 hover:text-green-500 transition-colors"
+              >
+                +502 5050-9724
+              </a>
+              <p class="text-gray-400 text-sm mt-1">Respuesta rápida garantizada</p>
+              <a 
+                href="https://wa.me/50250509724?text=Hola%2C%20me%20interesa%20conocer%20más%20sobre%20BLACK%20GYM" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="inline-flex items-center space-x-2 bg-green-500 text-black px-4 py-2 rounded-full text-sm font-medium mt-3 hover:bg-green-400 transition-colors"
+              >
+                <i class="fab fa-whatsapp"></i>
+                <span>Chatear ahora</span>
+              </a>
+            </div>
+          </div>
+        </div>-->
+
+        <div class="contact-item bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-green-500 transition-colors">
+          <div class="flex items-start space-x-4">
+            <div class="contact-icon w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-black text-xl">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h3 class="text-white font-bold text-lg mb-2">Email</h3>
+              <a 
+                href="mailto:info@blackgym.fit" 
+                class="text-gray-400 hover:text-green-500 transition-colors"
+              >
+                info@blackgym.fit
+              </a>
+              <p class="text-gray-400 text-sm mt-1">Consultas generales y cotizaciones</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Horarios -->
+        <div class="contact-item bg-gray-900 p-6 rounded-lg border border-gray-800">
+          <div class="flex items-start space-x-4">
+            <div class="contact-icon w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-black text-xl">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="contact-details">
+              <h3 class="text-white font-bold text-lg mb-3">Horarios de Atención</h3>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between">
+                  <span class="text-gray-400">Lunes - Viernes:</span>
+                  <span class="text-white">5:00 AM - 10:00 PM</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-400">Sábados:</span>
+                  <span class="text-white">6:00 AM - 8:00 PM</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-400">Domingos:</span>
+                  <span class="text-white">7:00 AM - 6:00 PM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Contact Form -->
+      <ContactForm client:load />
+    </div>
+    
+    <!-- Map Section -->
+    <div class="map-section">
+      <div class="section-header text-center mb-8">
+        <h3 class="text-2xl font-bold text-white mb-4">
+          <i class="fas fa-map-marked-alt text-green-500 mr-2"></i>
+          Nuestra Ubicación
+        </h3>
+        <p class="text-gray-400">
+          Visítanos en San Martín Jilotepeque, Chimaltenango
+        </p>
+      </div>
+      
+      <div class="map-container relative bg-gray-900 rounded-lg overflow-hidden shadow-xl border border-gray-800">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31127.079644551934!2d-90.84860874999999!3d14.706948199999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858c1c3d2f6f5b7d%3A0x3e1c1c5b7f5b7f5b!2sSan%20Mart%C3%ADn%20Jilotepeque%2C%20Guatemala!5e0!3m2!1ses!2sgt!4v1704239847123!5m2!1ses!2sgt"
+          width="100%" 
+          height="400" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Ubicación de BLACK GYM en San Martín Jilotepeque, Chimaltenango"
+        ></iframe>
+        
+        <!-- Map Overlay -->
+        <div class="absolute top-4 left-4 bg-black/80 backdrop-blur-sm rounded-lg p-4 max-w-xs">
+          <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+              <i class="fas fa-dumbbell text-black text-sm"></i>
+            </div>
+            <div>
+              <h4 class="text-white font-bold text-sm">BLACK GYM</h4>
+              <p class="text-gray-400 text-xs">San Martín Jilotepeque</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions 
+    <div class="quick-actions mt-12 text-center">
+      <h3 class="text-2xl font-bold text-white mb-6">¿Necesitas información inmediata?</h3>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="https://wa.me/50250509724?text=Hola%2C%20me%20gustaría%20agendar%20una%20visita%20a%20BLACK%20GYM" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center space-x-2 bg-gradient-to-r from-green-500 to-green-400 text-black font-bold px-6 py-3 rounded-full hover:from-green-400 hover:to-green-300 transition-all duration-300 shadow-lg hover:shadow-xl"
+        >
+          <i class="fab fa-whatsapp text-lg"></i>
+          <span>Agendar Visita</span>
+        </a>
+        
+        <a 
+          href="/#planes" 
+          rel="noopener noreferrer"
+          class="nav-link inline-flex items-center space-x-2 border-2 border-green-500 text-green-500 font-bold px-6 py-3 rounded-full hover:bg-green-500 hover:text-black transition-all duration-300"
+        >
+          <i class="fas fa-info-circle"></i>
+          <span>Info Planes</span>
+        </a>
+      </div>
+    </div> -->
+  </div>
+</section>
+
+<style>
+  .contact {
+    background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .section-padding {
+    padding: 80px 0;
+  }
+  
+  .contact-item:hover {
+    transform: translateY(-2px);
+    transition: transform 0.3s ease;
+  }
+  
+  .map-container {
+    position: relative;
+    min-height: 400px;
+  }
+  
+  .map-container iframe {
+    filter: grayscale(0.3) contrast(1.1);
+  }
+  
+  .map-container:hover iframe {
+    filter: grayscale(0) contrast(1);
+    transition: filter 0.3s ease;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-content {
+      grid-template-columns: 1fr;
+    }
+    
+    .section-padding {
+      padding: 60px 0;
+    }
+    
+    .quick-actions .flex {
+      flex-direction: column;
+    }
+  }
+</style>

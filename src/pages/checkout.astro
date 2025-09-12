@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CheckoutForm from '../components/react/CheckoutForm.tsx';
+---
+
+<Layout 
+  title="Checkout - BLACK GYM" 
+  description="Finaliza tu compra en BLACK GYM. Completa tus datos y realiza el pago de forma segura."
+  keywords="checkout, compra, pago, black gym, finalizar compra, datos de envío"
+>
+  <Header />
+  
+  <main class="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black pt-20">
+    <!-- Breadcrumbs -->
+    <div class=" border-b border-green-500/20">
+      <div class="max-w-6xl mx-auto px-4 py-4">
+        <nav class="flex items-center space-x-2 text-sm">
+          <a href="/" class="text-gray-400 hover:text-green-500 transition-colors">
+            <i class="fas fa-home"></i>
+          </a>
+          <span class="text-gray-400">/</span>
+          <a href="/tienda" class="text-gray-400 hover:text-green-500 transition-colors">
+            Tienda
+          </a>
+          <span class="text-gray-400">/</span>
+          <a href="/carrito" class="text-gray-400 hover:text-green-500 transition-colors">
+            Carrito
+          </a>
+          <span class="text-gray-400">/</span>
+          <span class="text-green-500 font-medium">Checkout</span>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Checkout Content -->
+    <div class="max-w-6xl mx-auto px-4 py-8">
+      <!-- Header -->
+      <div class="text-center mb-8">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
+          FINALIZAR <span class="text-green-500">COMPRA</span>
+        </h1>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+          Completa tus datos de envío y finaliza tu pedido. Procesamos tu orden de forma rápida y segura.
+        </p>
+      </div>
+
+      <!-- Checkout Form Component -->
+      <CheckoutForm client:load />
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Estilos adicionales para la página de checkout */
+  .checkout-container {
+    background: linear-gradient(135deg, rgba(0, 255, 65, 0.05) 0%, rgba(45, 45, 45, 0.05) 100%);
+  }
+</style>
