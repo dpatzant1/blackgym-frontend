@@ -1,14 +1,39 @@
-// Helper para construir URLs de la API de forma segura
+// Helper para construir URLs de la API de forma segura y consistente con api-client
 export const apiURL = (path: string) => {
-  const base = (import.meta.env.VITE_API_URL || '').toString().trim();
-  const cleanBase = base.replace(/\/+$/g, '');
-  const cleanPath = path.replace(/^\/+/, '');
+  const buildBase = (import.meta.env.VITE_API_URL || '').toString().trim().replace(/\/+$/g, '');
 
-  if (cleanBase) {
-    return `${cleanBase}/${cleanPath}`;
+  let resolvedBase: string | undefined = undefined;
+  if (buildBase) resolvedBase = buildBase;
+
+  // Intentar override runtime inyectado (window.__ENV__)
+  if (!resolvedBase && typeof window !== 'undefined') {
+    try {
+      const winAny = window as any;
+      if (winAny.__ENV__ && winAny.__ENV__.VITE_API_URL) {
+        resolvedBase = String(winAny.__ENV__.VITE_API_URL).trim().replace(/\/+$/g, '');
+      }
+    } catch (e) {
+      // ignore
+    }
   }
 
-  // Fallback: si no hay base definida, devolver ruta relativa para que el frontend intente el mismo host
+  // Intentar inferir api.<host> si estamos en cliente y no hay base
+  if (!resolvedBase && typeof window !== 'undefined') {
+    try {
+      const host = window.location.hostname.replace(/^www\./, '');
+      resolvedBase = host.startsWith('api.') ? `${window.location.protocol}//${host}` : `${window.location.protocol}//api.${host}`;
+    } catch (e) {
+      // ignore
+    }
+  }
+
+  const cleanPath = path.replace(/^\/+/, '');
+
+  if (resolvedBase) {
+    return `${resolvedBase}/${cleanPath}`;
+  }
+
+  // Fallback: ruta relativa
   return `/${cleanPath}`;
 };
 
