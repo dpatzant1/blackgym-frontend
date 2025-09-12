@@ -9,8 +9,6 @@ export interface CategoriasParams {
 
 // Obtener todas las categorías
 export const getCategorias = async (params: CategoriasParams = {}): Promise<PaginatedResponse<Categoria>> => {
-  console.log('🌐 categorias.ts - Llamando API con params:', params);
-  
   const searchParams = new URLSearchParams();
   
   if (params.page) searchParams.append('page', params.page.toString());
@@ -18,11 +16,7 @@ export const getCategorias = async (params: CategoriasParams = {}): Promise<Pagi
   if (params.includeProducts) searchParams.append('includeProducts', 'true');
 
   const url = `/api/categorias?${searchParams.toString()}`;
-  console.log('🔗 categorias.ts - URL construida:', url);
-  
   const response = await apiClient.get(url);
-  console.log('📡 categorias.ts - Respuesta de API:', response.data);
-  
   return response.data;
 };
 

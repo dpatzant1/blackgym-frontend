@@ -29,7 +29,7 @@ const initEmailJS = () => {
     emailJSInitialized = true;
     return true;
   } catch (error) {
-    console.error('❌ Error al inicializar EmailJS:', error);
+    // silencioso: fallo al inicializar EmailJS
     return false;
   }
 };
@@ -108,7 +108,7 @@ Gracias por tu compra en BLACK GYM. Tu orden ha sido procesada exitosamente.
     return true;
 
   } catch (error) {
-    console.error('❌ Error al enviar notificación por email:', error);
+    // silencioso: error al enviar email
     return false;
   }
 };

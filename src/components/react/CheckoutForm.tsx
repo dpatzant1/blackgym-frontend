@@ -76,7 +76,7 @@ const CheckoutForm: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       if (!hasHydrated) {
-        console.warn('Cart hydration timed out, proceeding anyway');
+        // fallback: continuar aunque no haya hidratado
       }
     }, 2000);
 
@@ -202,13 +202,9 @@ const CheckoutForm: React.FC = () => {
               formData.email
             );
             
-            if (emailEnviado) {
-              console.log('✅ Email de confirmación enviado exitosamente');
-            } else {
-              console.warn('⚠️ No se pudo enviar el email de confirmación');
-            }
+            // email enviado o no: no log en producción
           } catch (emailError) {
-            console.error('❌ Error al enviar email de confirmación:', emailError);
+            // silencioso: fallo al enviar email
           }
 
           // Pago exitoso
@@ -229,7 +225,6 @@ const CheckoutForm: React.FC = () => {
           throw new Error('Error al crear la orden');
         }
       } catch (error) {
-        console.error('Error al procesar la orden:', error);
         setPaymentState(prev => ({
           ...prev,
           step: 'result',

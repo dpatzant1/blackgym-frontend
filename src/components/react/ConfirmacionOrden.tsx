@@ -26,7 +26,6 @@ const ConfirmacionOrden: React.FC<ConfirmacionOrdenProps> = ({ ordenId }) => {
         const ordenData = await getOrden(parseInt(ordenId));
         setOrden(ordenData);
       } catch (error) {
-        console.error('Error al cargar la orden:', error);
         setError('No se pudo cargar la información de la orden');
         toast.error('Error al cargar los detalles de la orden');
       } finally {

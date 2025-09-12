@@ -101,7 +101,6 @@ export const obtenerSugerencias = async (termino: string, maxResultados: number 
     });
     return response.productos;
   } catch (error) {
-    console.error('Error obteniendo sugerencias:', error);
     return [];
   }
 };

@@ -61,7 +61,6 @@ const ContactForm: React.FC = () => {
         setSubmitStatus('error');
       }
     } catch (error) {
-      console.error('Error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);

@@ -69,10 +69,9 @@
                     statusDiv.innerHTML = '❌ Error al enviar el email. Revisa la consola para más detalles.';
                 }
             } catch (error) {
-                console.error('Error:', error);
                 statusDiv.style.background = '#f8d7da';
                 statusDiv.style.color = '#721c24';
-                statusDiv.innerHTML = '❌ Error inesperado: ' + error.message;
+                statusDiv.innerHTML = '❌ Error inesperado: ' + (error.message || String(error));
             }
         });
     </script>

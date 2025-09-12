@@ -102,7 +102,6 @@ export const useBusquedaAvanzada = (params: UseBusquedaAvanzadaParams): UseBusqu
       setSearchResults(filteredProducts);
       setSearchPagination(response.pagination);
     } catch (error: any) {
-      console.error('Error en búsqueda:', error);
       setSearchError(error.message || 'Error al buscar productos');
       setSearchResults([]);
       setSearchPagination(null);
@@ -122,7 +121,6 @@ export const useBusquedaAvanzada = (params: UseBusquedaAvanzadaParams): UseBusqu
       const suggestions = await obtenerSugerencias(term, 8);
       setSugerencias(suggestions);
     } catch (error) {
-      console.error('Error obteniendo sugerencias:', error);
       setSugerencias([]);
     }
   };

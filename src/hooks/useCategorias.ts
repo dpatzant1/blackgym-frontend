@@ -20,30 +20,24 @@ export const useCategorias = (): UseCategoriasReturn => {
       setIsLoading(true);
       setError(null);
       
-      console.log('🔍 useCategorias - Iniciando fetch de categorías...');
-      
       // Test directo con fetch antes del servicio (usando helper para evitar undefinedapi)
       try {
         const testResponse = await fetch(apiURL('api/categorias'));
-        const testData = await testResponse.json();
-        console.log('🧪 useCategorias - Test fetch directo:', testData);
+        await testResponse.json();
       } catch (e) {
-        console.warn('🧪 useCategorias - Test fetch directo falló:', e);
+        // silencioso: test fallback
       }
       
       const response = await getCategorias({ limit: 50 });
-      console.log('📥 useCategorias - Respuesta recibida:', response);
       
       if (response.data) {
-        console.log('✅ useCategorias - Categorías desde response.data:', response.data);
         setCategorias(response.data);
       } else if (Array.isArray(response)) {
-        console.log('✅ useCategorias - Categorías desde array directo:', response);
         setCategorias(response);
       }
       
     } catch (err: any) {
-      console.error('❌ useCategorias - Error fetching categorias:', err);
+  // Error manejado arriba (silencioso en producción)
       setError(err.message || 'Error al cargar categorías');
       setCategorias([]);
     } finally {

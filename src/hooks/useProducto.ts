@@ -21,7 +21,6 @@ export const useProducto = (id: number): UseProductoReturn => {
         const response = await getProducto(id);
         setProducto(response);
       } catch (err: any) {
-        console.error('Error fetching producto:', err);
         setError(err.message || 'Error al cargar producto');
         setProducto(null);
       } finally {

@@ -25,7 +25,7 @@ const TiendaPage: React.FC = () => {
           setCategorias(data.data.categorias);
         }
       } catch (error) {
-        console.error('Error obteniendo categorías:', error);
+        // silencioso: error al obtener categorías
       } finally {
         setCategoriasLoading(false);
       }
@@ -146,7 +146,7 @@ const TiendaPage: React.FC = () => {
               count: data.data?.pagination?.total || 0
             };
           } catch (error) {
-            console.error(`Error contando productos para categoría ${cat.nombre}:`, error);
+            // silencioso: contar productos falló
             return {
               ...cat,
               count: 0

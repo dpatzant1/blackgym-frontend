@@ -41,7 +41,6 @@ const SearchSuggestions: React.FC<SearchSuggestionsProps> = ({
         const productos = await obtenerSugerencias(searchTerm, 6);
         setSugerencias(productos);
       } catch (error) {
-        console.error('Error obteniendo sugerencias:', error);
         setSugerencias([]);
       } finally {
         setIsLoading(false);

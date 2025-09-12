@@ -47,21 +47,11 @@ const apiClient = axios.create({
 });
 
 // Debug: mostrar la baseURL que se está usando en tiempo de ejecución (proporcionar detalles)
-try {
-  // eslint-disable-next-line no-console
-  if (runtimeBase) {
-    console.log('🔧 api-client baseURL (resolved):', runtimeBase);
-  } else {
-    console.log('🔧 api-client baseURL: (no baseURL resolvable) — usando rutas relativas (ej: /api/...)');
-  }
-} catch (e) {
-  /* ignore in environments that restrict console */
-}
+// No logs in production: baseURL resolution is silent here.
 
 // Interceptor para requests
 apiClient.interceptors.request.use(
-  (config) => {
-    console.log(`🚀 API Request: ${config.method?.toUpperCase()} ${config.url}`);
+    (config) => {
     return config;
   },
   (error) => {
@@ -72,22 +62,10 @@ apiClient.interceptors.request.use(
 
 // Interceptor para responses
 apiClient.interceptors.response.use(
-  (response) => {
-    console.log(`✅ API Response: ${response.status} ${response.config.url}`);
+    (response) => {
     return response;
   },
   (error) => {
-    console.error('❌ Response Error:', error.response?.status, error.message);
-    
-    // Manejo de errores específicos
-    if (error.response?.status === 404) {
-      console.error('🔍 Recurso no encontrado');
-    } else if (error.response?.status >= 500) {
-      console.error('🚨 Error del servidor');
-    } else if (error.code === 'ECONNREFUSED') {
-      console.error('🔌 No se puede conectar con el servidor');
-    }
-    
     return Promise.reject(error);
   }
 );

@@ -51,16 +51,13 @@ export const useProductos = (params: UseProductosParams = {}): UseProductosRetur
       } else {
         // Intentar API real primero
         try {
-          console.log('🚀 Intentando conectar con API real...');
           response = await getProductos({
             categoria: typeof params.categoria === 'string' ? undefined : params.categoria,
             search: params.search,
             limit: params.limit || 12,
             page: params.page || 1
           });
-          console.log('✅ API real conectada exitosamente');
         } catch (apiError) {
-          console.warn('⚠️ API no disponible, usando datos mock como fallback:', apiError);
           response = await mockProductosService.getProductos({
             categoria: params.categoria,
             search: params.search,
@@ -87,7 +84,6 @@ export const useProductos = (params: UseProductosParams = {}): UseProductosRetur
       }
       
     } catch (err: any) {
-      console.error('Error fetching productos:', err);
       setError(err.message || 'Error al cargar productos');
       setProductos([]);
     } finally {

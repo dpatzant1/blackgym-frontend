@@ -51,7 +51,6 @@ export const useInventario = (): UseInventarioReturn => {
         const inventarioParsed = JSON.parse(inventarioGuardado);
         setInventario(inventarioParsed);
       } catch (error) {
-        console.error('Error al cargar inventario:', error);
         localStorage.removeItem(INVENTARIO_KEY);
       }
     }
