@@ -22,7 +22,7 @@ export const useCategorias = (): UseCategoriasReturn => {
       console.log('🔍 useCategorias - Iniciando fetch de categorías...');
       
       // Test directo con fetch antes del servicio
-      const testResponse = await fetch('http://localhost:3000/api/categorias');
+      const testResponse = await fetch(`${import.meta.env.VITE_API_URL}api/categorias`);
       const testData = await testResponse.json();
       console.log('🧪 useCategorias - Test fetch directo:', testData);
       

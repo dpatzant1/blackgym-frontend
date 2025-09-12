@@ -17,7 +17,7 @@ const TiendaPage: React.FC = () => {
   useEffect(() => {
     const fetchCategorias = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/categorias');
+        const response = await fetch(`${import.meta.env.VITE_API_URL}api/categorias`);
         const data = await response.json();
         
         if (data.success && data.data && data.data.categorias) {
@@ -138,7 +138,7 @@ const TiendaPage: React.FC = () => {
       const categoriasConConteo = await Promise.all(
         categorias.map(async (cat) => {
           try {
-            const response = await fetch(`http://localhost:3000/api/productos?categoria=${cat.id}&limit=1`);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}api/productos?categoria=${cat.id}&limit=1`);
             const data = await response.json();
             return {
               ...cat,
