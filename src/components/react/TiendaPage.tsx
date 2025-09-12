@@ -4,6 +4,7 @@ import CategoryDropdown from './CategoryDropdown';
 import { getProductos } from '../../services/productos';
 import { useInicializarInventario } from '../../hooks/useInventario';
 import type { Categoria, Producto } from '../../types/api';
+import apiURL from '../../lib/api-url';
 
 const TiendaPage: React.FC = () => {
   const [selectedCategoryName, setSelectedCategoryName] = useState<string>('');
@@ -17,7 +18,7 @@ const TiendaPage: React.FC = () => {
   useEffect(() => {
     const fetchCategorias = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}api/categorias`);
+  const response = await fetch(apiURL('api/categorias'));
         const data = await response.json();
         
         if (data.success && data.data && data.data.categorias) {
@@ -138,7 +139,7 @@ const TiendaPage: React.FC = () => {
       const categoriasConConteo = await Promise.all(
         categorias.map(async (cat) => {
           try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}api/productos?categoria=${cat.id}&limit=1`);
+            const response = await fetch(apiURL(`api/productos?categoria=${cat.id}&limit=1`));
             const data = await response.json();
             return {
               ...cat,

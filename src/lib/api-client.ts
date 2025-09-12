@@ -2,12 +2,20 @@ import axios from 'axios';
 
 // Configuración del cliente HTTP para la API
 const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3000',
+  baseURL: import.meta.env.VITE_API_URL,
   timeout: parseInt(import.meta.env.VITE_API_TIMEOUT) || 10000,
   headers: {
     'Content-Type': 'application/json',
   },
 });
+
+// Debug: mostrar la baseURL que se está usando en tiempo de ejecución
+try {
+  // eslint-disable-next-line no-console
+  console.log('🔧 api-client baseURL:', import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL : '(undefined) - usando rutas relativas');
+} catch (e) {
+  /* ignore in environments that restrict console */
+}
 
 // Interceptor para requests
 apiClient.interceptors.request.use(
