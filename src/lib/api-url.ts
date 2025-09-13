@@ -21,7 +21,12 @@ export const apiURL = (path: string) => {
   if (!resolvedBase && typeof window !== 'undefined') {
     try {
       const host = window.location.hostname.replace(/^www\./, '');
+
+      //Descomentar para producción
       resolvedBase = host.startsWith('api.') ? `${window.location.protocol}//${host}` : `${window.location.protocol}//api.${host}`;
+      
+      //Comentar para producción
+      //resolvedBase = `http://localhost:3000`;
     } catch (e) {
       // ignore
     }

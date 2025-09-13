@@ -504,7 +504,16 @@ const CheckoutForm: React.FC = () => {
             </h3>
 
             {/* Lista de productos */}
-            <div className="space-y-4 mb-6">
+            <div className="space-y-4 mb-6 max-h-[383px] overflow-y-auto [&::-webkit-scrollbar]:w-2
+                     [&::-webkit-scrollbar-track]:bg-gray-700
+                     [&::-webkit-scrollbar-track]:rounded
+                     [&::-webkit-scrollbar-thumb]:bg-green-500
+                     [&::-webkit-scrollbar-thumb]:rounded
+                     [&::-webkit-scrollbar-thumb:hover]:bg-green-400"
+                    style={{
+                          scrollbarWidth: 'thin',
+                          scrollbarColor: 'rgba(16, 185, 129, 0.2) rgba(55, 65, 81, 0)',
+                    }}>
               {items.map((item) => (
                 <div key={item.id} className="flex items-center space-x-3 p-3 bg-black rounded-lg border border-green-500/10">
                   <div className="w-12 h-12 rounded border border-green-500/20 overflow-hidden">

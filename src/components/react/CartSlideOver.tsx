@@ -85,7 +85,16 @@ const CartSlideOver: React.FC = () => {
           ) : (
             <>
               {/* Lista de productos */}
-              <div className="flex-1 overflow-y-auto p-4 max-h-[calc(100vh-320px)]">
+              <div className="flex-1 overflow-y-auto p-4 max-h-[calc(100vh-365px)] md:max-h-[calc(100vh-320px)] [&::-webkit-scrollbar]:w-2
+                     [&::-webkit-scrollbar-track]:bg-gray-700
+                     [&::-webkit-scrollbar-track]:rounded
+                     [&::-webkit-scrollbar-thumb]:bg-green-500
+                     [&::-webkit-scrollbar-thumb]:rounded
+                     [&::-webkit-scrollbar-thumb:hover]:bg-green-400"
+                    style={{
+                            scrollbarWidth: 'thin',
+                            scrollbarColor: 'rgba(16, 185, 129, 0.2) rgba(55, 65, 81, 0)',
+                    }}>
                 <div className="space-y-4">
                   {items.map((item) => (
                     <div key={item.id} className="bg-gray-800 rounded-lg p-4 border border-gray-700 group hover:border-green-500/30 transition-colors duration-300">

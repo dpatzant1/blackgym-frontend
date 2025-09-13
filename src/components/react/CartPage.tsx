@@ -118,7 +118,16 @@ const CartPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="divide-y divide-gray-700">
+              <div className="divide-y divide-gray-700 max-h-[770px] overflow-y-auto [&::-webkit-scrollbar]:w-2
+                     [&::-webkit-scrollbar-track]:bg-gray-700
+                     [&::-webkit-scrollbar-track]:rounded
+                     [&::-webkit-scrollbar-thumb]:bg-green-500
+                     [&::-webkit-scrollbar-thumb]:rounded
+                     [&::-webkit-scrollbar-thumb:hover]:bg-green-400"
+                    style={{
+                            scrollbarWidth: 'thin',
+                            scrollbarColor: 'rgba(16, 185, 129, 0.2) rgba(55, 65, 81, 0)',
+                    }}>
                 {items.map((item, index) => (
                   <div key={item.id} className="p-4 md:p-6 hover:bg-gray-800/50 transition-colors duration-200">
                     {/* Layout móvil y desktop diferente */}
@@ -323,7 +332,17 @@ const CartPage: React.FC = () => {
               
               <div className="p-4 md:p-6 space-y-4">
                 {/* Desglose de productos */}
-                <div className="space-y-2 md:space-y-3">
+                <div className="space-y-2 md:space-y-3 overflow-y-auto max-h-72
+                    [&::-webkit-scrollbar]:w-2
+                     [&::-webkit-scrollbar-track]:bg-gray-700
+                     [&::-webkit-scrollbar-track]:rounded
+                     [&::-webkit-scrollbar-thumb]:bg-green-500
+                     [&::-webkit-scrollbar-thumb]:rounded
+                     [&::-webkit-scrollbar-thumb:hover]:bg-green-400"
+                    style={{
+                      scrollbarWidth: 'thin',
+                      scrollbarColor: 'rgba(16, 185, 129, 0.2) rgba(55, 65, 81, 0)',
+                    }}>
                   {items.map((item) => (
                     <div key={item.id} className="flex justify-between text-xs md:text-sm gap-2">
                       <span className="text-gray-400 truncate flex-1 min-w-0">

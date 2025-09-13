@@ -139,7 +139,7 @@ const CategoryDropdown: React.FC<CategoryDropdownProps> = ({
                      [&::-webkit-scrollbar-thumb:hover]:bg-green-400"
           style={{
             scrollbarWidth: 'thin',
-            scrollbarColor: '#10b981 #374151',
+            scrollbarColor: 'rgba(16, 185, 129, 0.2) rgba(55, 65, 81, 0)',
           }}
           onMouseLeave={() => setIsOpen(false)}
         >
