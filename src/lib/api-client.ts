@@ -31,10 +31,10 @@ if (!runtimeBase && typeof window !== 'undefined') {
     // No añadir doble subdominio si ya viene con api.
 
     //Descomentar para producción
-    //runtimeBase = host.startsWith('api.') ? `${window.location.protocol}//${host}` : `${window.location.protocol}//api.${host}`
+    runtimeBase = host.startsWith('api.') ? `${window.location.protocol}//${host}` : `${window.location.protocol}//api.${host}`
     
     //Comentar para producción
-    runtimeBase =  `http://localhost:3000/`;
+    //runtimeBase =  `http://localhost:3000/`;
   } catch (e) {
     // ignore
   }
